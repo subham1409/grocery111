@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green's HUB – Fresh Vegetables & Fresh Fruits | Ahmedabad</title>
+<meta name="description" content="Green's HUB by VEGRUITS HUB PVT. LTD. – Fresh daily vegetables and fruits in Ahmedabad. Order online via WhatsApp. Fast delivery. 5★ rated local shop.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #1a4d2e;
+    --green-mid: #2d7a4f;
+    --green-light: #4caf75;
+    --green-pale: #e8f5ec;
+    --green-accent: #6fcf97;
+    --amber: #f7c948;
+    --orange: #f4845f;
+    --cream: #fdf8f0;
+    --white: #ffffff;
+    --text-dark: #1a2b1e;
+    --text-mid: #3d5c47;
+    --text-light: #7a9882;
+    --shadow-soft: 0 4px 24px rgba(26,77,46,0.10);
+    --shadow-card: 0 8px 32px rgba(26,77,46,0.13);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --transition: all 0.32s cubic-bezier(.4,0,.2,1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--green-pale); }
+  ::-webkit-scrollbar-thumb { background: var(--green-mid); border-radius: 10px; }
+
+  /* ── NAVBAR ── */
+  #navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(253,248,240,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1.5px solid rgba(77,175,117,0.13);
+    transition: var(--transition);
+  }
+  #navbar.scrolled { box-shadow: 0 4px 20px rgba(26,77,46,0.12); }
+  .nav-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; height: 70px; gap: 20px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo-icon {
+    width: 44px; height: 44px; background: var(--green-deep);
+    border-radius: 12px; display: grid; place-items: center;
+    font-size: 22px;
+  }
+  .nav-logo-text { line-height: 1.1; }
+  .nav-logo-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 18px; color: var(--green-deep); }
+  .nav-logo-text span { font-size: 11px; color: var(--text-light); letter-spacing: .5px; }
+  .nav-links { display: flex; gap: 6px; align-items: center; }
+  .nav-links a {
+    text-decoration: none; font-size: 14px; font-weight: 500;
+    color: var(--text-mid); padding: 8px 14px; border-radius: 8px;
+    transition: var(--transition);
+  }
+  .nav-links a:hover { background: var(--green-pale); color: var(--green-deep); }
+  .nav-search {
+    flex: 1; max-width: 320px;
+    display: flex; align-items: center; gap: 10px;
+    background: var(--white); border: 1.5px solid #dce8e0;
+    border-radius: 50px; padding: 8px 16px;
+    transition: var(--transition);
+  }
+  .nav-search:focus-within { border-color: var(--green-mid); box-shadow: 0 0 0 3px rgba(45,122,79,0.12); }
+  .nav-search input { border: none; outline: none; background: transparent; font-family: 'DM Sans', sans-serif; font-size: 14px; width: 100%; color: var(--text-dark); }
+  .nav-search svg { color: var(--text-light); flex-shrink: 0; }
+  .nav-cart-btn {
+    position: relative; background: var(--green-deep); color: white;
+    border: none; cursor: pointer; border-radius: 12px;
+    padding: 10px 18px; display: flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600; transition: var(--transition);
+  }
+  .nav-cart-btn:hover { background: var(--green-mid); transform: translateY(-1px); }
+  .cart-badge {
+    position: absolute; top: -6px; right: -6px;
+    background: var(--amber); color: var(--green-deep);
+    font-size: 11px; font-weight: 700; min-width: 20px; height: 20px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    display: none;
+  }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--green-deep); margin: 5px 0; border-radius: 2px; transition: var(--transition); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--green-deep) 0%, #2d5a3d 55%, #1e6e42 100%);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    padding-top: 70px;
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(111,207,151,0.15) 0%, transparent 60%),
+                      radial-gradient(circle at 80% 20%, rgba(247,201,72,0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 60% 80%, rgba(77,175,117,0.12) 0%, transparent 40%);
+  }
+  .hero-leaf {
+    position: absolute; font-size: 200px; opacity: 0.04;
+    user-select: none; pointer-events: none;
+  }
+  .hero-leaf:nth-child(1) { top: -30px; right: -20px; transform: rotate(-30deg); }
+  .hero-leaf:nth-child(2) { bottom: -40px; left: -30px; transform: rotate(20deg); font-size: 160px; }
+  .hero-inner {
+    max-width: 1280px; margin: 0 auto; padding: 60px 24px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-content { color: white; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50px; padding: 8px 16px; font-size: 13px; font-weight: 500;
+    margin-bottom: 28px; backdrop-filter: blur(8px);
+  }
+  .hero-badge span { background: var(--amber); color: var(--green-deep); border-radius: 50px; padding: 2px 10px; font-weight: 700; font-size: 11px; }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 64px); line-height: 1.1;
+    margin-bottom: 20px; font-weight: 800;
+  }
+  .hero-title .highlight { color: var(--green-accent); }
+  .hero-sub { font-size: 18px; opacity: 0.82; line-height: 1.6; margin-bottom: 36px; max-width: 440px; }
+  .hero-rating {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.10); border-radius: 14px; padding: 14px 20px;
+    margin-bottom: 36px; border: 1px solid rgba(255,255,255,0.15);
+    width: fit-content;
+  }
+  .stars { color: var(--amber); font-size: 18px; letter-spacing: 2px; }
+  .rating-text strong { display: block; font-size: 18px; font-weight: 700; }
+  .rating-text span { font-size: 13px; opacity: 0.7; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--amber); color: var(--green-deep);
+    border: none; padding: 14px 28px; border-radius: 14px;
+    font-size: 16px; font-weight: 700; cursor: pointer;
+    transition: var(--transition); text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-primary:hover { background: #ffd700; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(247,201,72,0.4); }
+  .btn-wa {
+    background: #25d366; color: white;
+    border: none; padding: 14px 28px; border-radius: 14px;
+    font-size: 16px; font-weight: 700; cursor: pointer;
+    transition: var(--transition); text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-wa:hover { background: #128c7e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.4); }
+  .hero-visual {
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 14px;
+    animation: floatUp 1s ease-out forwards; opacity: 0; animation-delay: .3s;
+  }
+  @keyframes floatUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
+  .hero-img-card {
+    border-radius: 20px; overflow: hidden; position: relative;
+    aspect-ratio: 1; background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 70px; border: 1px solid rgba(255,255,255,0.12);
+    transition: var(--transition);
+  }
+  .hero-img-card:hover { transform: scale(1.03); }
+  .hero-img-card:first-child { grid-row: 1/3; aspect-ratio: auto; font-size: 90px; }
+  .hero-img-card .card-label {
+    position: absolute; bottom: 12px; left: 12px;
+    background: rgba(0,0,0,0.5); color: white; backdrop-filter: blur(8px);
+    border-radius: 8px; padding: 4px 10px; font-size: 12px; font-weight: 600;
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 90px 24px; }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: var(--green-pale); color: var(--green-mid);
+    border-radius: 50px; padding: 6px 16px; font-size: 12px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;
+  }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 44px); line-height: 1.2; margin-bottom: 14px; color: var(--green-deep); }
+  .section-sub { color: var(--text-light); font-size: 16px; line-height: 1.7; max-width: 560px; }
+
+  /* ── WHY US ── */
+  #why { background: var(--green-deep); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 48px; }
+  .why-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius); padding: 32px 24px; color: white;
+    transition: var(--transition);
+  }
+  .why-card:hover { background: rgba(255,255,255,0.10); transform: translateY(-4px); }
+  .why-icon { font-size: 42px; margin-bottom: 18px; }
+  .why-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .why-card p { font-size: 14px; opacity: 0.72; line-height: 1.7; }
+  #why .section-title, #why .section-sub { color: white; }
+  #why .section-sub { opacity: 0.7; }
+
+  /* ── CATEGORIES ── */
+  #categories { background: var(--cream); }
+  .cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px; }
+  .cat-card {
+    border-radius: 24px; overflow: hidden; position: relative;
+    height: 260px; cursor: pointer; transition: var(--transition);
+    display: flex; align-items: flex-end; padding: 28px;
+    border: 2px solid transparent;
+  }
+  .cat-card:hover { transform: scale(1.02); box-shadow: 0 16px 48px rgba(26,77,46,0.22); }
+  .cat-card.fruits { background: linear-gradient(135deg, #ff9a3c, #f4845f, #ff6b6b); }
+  .cat-card.veggies { background: linear-gradient(135deg, #2d7a4f, #4caf75, #6fcf97); }
+  .cat-emoji { position: absolute; top: 20px; right: 24px; font-size: 80px; opacity: 0.35; }
+  .cat-content { color: white; position: relative; z-index: 1; }
+  .cat-content h3 { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; }
+  .cat-content p { font-size: 14px; opacity: 0.85; margin: 6px 0 14px; }
+  .cat-btn {
+    background: rgba(255,255,255,0.22); border: 1.5px solid rgba(255,255,255,0.5);
+    color: white; border-radius: 50px; padding: 8px 20px; font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: var(--transition); backdrop-filter: blur(6px);
+  }
+  .cat-btn:hover { background: white; color: var(--green-deep); }
+
+  /* ── SHOP ── */
+  #shop { background: var(--white); }
+  .shop-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 36px; }
+  .filter-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .filter-tab {
+    padding: 10px 22px; border-radius: 50px; border: 2px solid #dce8e0;
+    background: transparent; cursor: pointer; font-size: 14px; font-weight: 600;
+    transition: var(--transition); color: var(--text-mid); font-family: 'DM Sans', sans-serif;
+  }
+  .filter-tab.active, .filter-tab:hover { background: var(--green-deep); color: white; border-color: var(--green-deep); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 22px;
+  }
+  .product-card {
+    background: var(--cream); border-radius: var(--radius);
+    overflow: hidden; border: 1.5px solid #e4ede7;
+    transition: var(--transition); position: relative;
+    display: flex; flex-direction: column;
+  }
+  .product-card:hover { box-shadow: var(--shadow-card); transform: translateY(-5px); border-color: var(--green-light); }
+  .product-img-wrap {
+    aspect-ratio: 1; background: var(--green-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 70px; position: relative; overflow: hidden;
+  }
+  .product-badge {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--amber); color: var(--green-deep);
+    font-size: 10px; font-weight: 700; border-radius: 6px; padding: 3px 8px;
+  }
+  .product-info { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+  .product-name { font-weight: 600; font-size: 15px; color: var(--text-dark); margin-bottom: 6px; }
+  .product-unit { font-size: 12px; color: var(--text-light); margin-bottom: 10px; }
+  .product-price { font-size: 20px; font-weight: 700; color: var(--green-deep); margin-bottom: 14px; }
+  .product-price span { font-size: 13px; color: var(--text-light); text-decoration: line-through; font-weight: 400; margin-left: 6px; }
+  .qty-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .qty-btn {
+    width: 32px; height: 32px; border-radius: 8px; border: 1.5px solid #dce8e0;
+    background: white; cursor: pointer; font-size: 18px; font-weight: 600;
+    display: grid; place-items: center; transition: var(--transition); color: var(--green-deep);
+  }
+  .qty-btn:hover { background: var(--green-deep); color: white; border-color: var(--green-deep); }
+  .qty-val { font-weight: 700; font-size: 15px; min-width: 24px; text-align: center; }
+  .add-cart-btn {
+    background: var(--green-deep); color: white; border: none;
+    border-radius: 10px; padding: 11px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: var(--transition); width: 100%;
+    font-family: 'DM Sans', sans-serif; margin-top: auto;
+  }
+  .add-cart-btn:hover { background: var(--green-mid); }
+  .add-cart-btn.added { background: var(--green-light); }
+
+  /* ── DEALS BANNER ── */
+  #deals {
+    background: linear-gradient(135deg, var(--amber), #f4845f);
+    padding: 60px 24px;
+  }
+  .deals-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap;
+  }
+  .deals-text h2 { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--green-deep); margin-bottom: 10px; }
+  .deals-text p { color: rgba(26,77,46,0.75); font-size: 16px; }
+  .deals-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-dark {
+    background: var(--green-deep); color: white; border: none;
+    padding: 14px 28px; border-radius: 14px; font-size: 16px; font-weight: 700;
+    cursor: pointer; transition: var(--transition); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif;
+  }
+  .btn-dark:hover { background: #0f3320; transform: translateY(-2px); }
+
+  /* ── ABOUT ── */
+  #about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 20px; }
+  .about-visual {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    height: 420px;
+  }
+  .about-img {
+    border-radius: 18px; background: var(--green-pale);
+    display: flex; align-items: center; justify-content: center; font-size: 64px;
+    border: 2px solid #d4e8d9; transition: var(--transition);
+  }
+  .about-img:hover { transform: scale(1.03); }
+  .about-img:first-child { grid-row: 1/3; border-radius: 24px; font-size: 80px; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
+  .stat-box { background: var(--green-pale); border-radius: 14px; padding: 20px; border: 1.5px solid #c8e0cf; }
+  .stat-box strong { display: block; font-size: 28px; font-weight: 800; color: var(--green-deep); }
+  .stat-box span { font-size: 13px; color: var(--text-light); }
+
+  /* ── GALLERY ── */
+  #gallery { background: var(--white); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 48px; }
+  .gallery-item {
+    aspect-ratio: 1; border-radius: 14px; background: var(--green-pale);
+    display: flex; align-items: center; justify-content: center; font-size: 50px;
+    cursor: pointer; transition: var(--transition); border: 2px solid transparent;
+    overflow: hidden; position: relative;
+  }
+  .gallery-item:hover { border-color: var(--green-mid); transform: scale(1.04); box-shadow: 0 8px 24px rgba(26,77,46,0.18); }
+  .gallery-item .overlay {
+    position: absolute; inset: 0; background: rgba(26,77,46,0.55);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: var(--transition);
+    color: white; font-size: 24px;
+  }
+  .gallery-item:hover .overlay { opacity: 1; }
+
+  /* ── LIGHTBOX ── */
+  #lightbox {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9999;
+    display: none; align-items: center; justify-content: center;
+    backdrop-filter: blur(8px);
+  }
+  #lightbox.open { display: flex; }
+  .lightbox-content {
+    background: white; border-radius: 24px; padding: 40px;
+    max-width: 420px; width: 90%; text-align: center;
+    animation: popIn .3s ease-out;
+  }
+  @keyframes popIn { from { scale: .8; opacity: 0; } to { scale: 1; opacity: 1; } }
+  .lightbox-emoji { font-size: 100px; margin-bottom: 16px; }
+  .lightbox-title { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--green-deep); margin-bottom: 8px; }
+  .lightbox-close {
+    position: absolute; top: 20px; right: 20px; background: white;
+    border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+    font-size: 20px; display: grid; place-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  /* ── REVIEWS ── */
+  #reviews { background: var(--green-pale); }
+  .reviews-rating-hero {
+    display: flex; align-items: center; gap: 24px;
+    background: var(--green-deep); border-radius: 20px; padding: 32px 36px;
+    margin-bottom: 40px; color: white; flex-wrap: wrap;
+  }
+  .rating-big { font-size: 72px; font-weight: 800; line-height: 1; }
+  .rating-info .stars-row { font-size: 30px; color: var(--amber); letter-spacing: 3px; }
+  .rating-info p { opacity: 0.7; font-size: 14px; margin-top: 6px; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+  .review-card {
+    background: white; border-radius: var(--radius); padding: 28px;
+    border: 1.5px solid #dce8e0; transition: var(--transition);
+  }
+  .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+  .review-stars { color: var(--amber); font-size: 18px; margin-bottom: 14px; }
+  .review-text { font-size: 15px; line-height: 1.7; color: var(--text-mid); margin-bottom: 18px; font-style: italic; }
+  .reviewer { display: flex; align-items: center; gap: 12px; }
+  .reviewer-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--green-deep); color: white;
+    display: grid; place-items: center; font-size: 16px; font-weight: 700; flex-shrink: 0;
+  }
+  .reviewer-name { font-weight: 700; font-size: 14px; color: var(--green-deep); }
+  .reviewer-tag { font-size: 12px; color: var(--text-light); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    background: var(--cream); border-radius: 14px; padding: 20px;
+    border: 1.5px solid #e4ede7;
+  }
+  .contact-icon { font-size: 26px; flex-shrink: 0; }
+  .contact-item h4 { font-weight: 700; font-size: 14px; color: var(--text-light); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
+  .contact-item p { font-size: 15px; color: var(--text-dark); line-height: 1.6; }
+  .contact-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  .contact-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 20px; border-radius: 10px; font-size: 14px; font-weight: 600;
+    text-decoration: none; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif;
+    transition: var(--transition);
+  }
+  .contact-btn.call { background: var(--green-deep); color: white; }
+  .contact-btn.call:hover { background: var(--green-mid); }
+  .contact-btn.wa { background: #25d366; color: white; }
+  .contact-btn.wa:hover { background: #128c7e; }
+  .map-wrap { border-radius: 20px; overflow: hidden; height: 380px; border: 2px solid #dce8e0; }
+  .map-wrap iframe { width: 100%; height: 100%; border: none; }
+
+  /* ── CART DRAWER ── */
+  #cart-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1500;
+    display: none; align-items: flex-start; justify-content: flex-end;
+    backdrop-filter: blur(4px);
+  }
+  #cart-overlay.open { display: flex; }
+  #cart-drawer {
+    background: white; width: 400px; max-width: 95vw; height: 100vh;
+    overflow-y: auto; padding: 28px; display: flex; flex-direction: column; gap: 0;
+    animation: slideIn .3s ease-out;
+  }
+  @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+  .cart-drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1.5px solid #e4ede7; }
+  .cart-drawer-header h2 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--green-deep); }
+  .cart-close-btn { background: var(--cream); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; display: grid; place-items: center; }
+  .cart-empty { text-align: center; padding: 60px 20px; color: var(--text-light); }
+  .cart-empty span { font-size: 64px; display: block; margin-bottom: 16px; }
+  #cart-items { flex: 1; display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+  .cart-item {
+    display: flex; gap: 12px; align-items: center;
+    background: var(--cream); border-radius: 12px; padding: 12px;
+    border: 1.5px solid #e4ede7;
+  }
+  .cart-item-emoji { font-size: 32px; background: white; border-radius: 10px; width: 48px; height: 48px; display: grid; place-items: center; flex-shrink: 0; }
+  .cart-item-info { flex: 1; min-width: 0; }
+  .cart-item-name { font-weight: 700; font-size: 13px; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cart-item-detail { font-size: 12px; color: var(--text-light); margin-bottom: 6px; }
+  .cart-item-controls { display: flex; align-items: center; gap: 6px; }
+  .cart-qty-btn {
+    width: 26px; height: 26px; border-radius: 7px; border: 1.5px solid #dce8e0;
+    background: white; cursor: pointer; font-size: 16px; font-weight: 700;
+    display: grid; place-items: center; transition: var(--transition); color: var(--green-deep);
+    line-height: 1; flex-shrink: 0;
+  }
+  .cart-qty-btn:hover { background: var(--green-deep); color: white; border-color: var(--green-deep); }
+  .cart-qty-val { font-weight: 700; font-size: 14px; min-width: 20px; text-align: center; }
+  .cart-item-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+  .cart-item-price { font-weight: 700; color: var(--green-deep); font-size: 14px; }
+  .cart-item-remove {
+    background: #fff0f0; border: 1.5px solid #ffd7d7; color: #e53935;
+    cursor: pointer; font-size: 13px; border-radius: 7px;
+    width: 26px; height: 26px; display: grid; place-items: center; transition: var(--transition);
+  }
+  .cart-item-remove:hover { background: #e53935; color: white; border-color: #e53935; }
+  .cart-summary-box { background: var(--cream); border-radius: 14px; padding: 16px 18px; margin-bottom: 14px; border: 1.5px solid #dce8e0; display: flex; flex-direction: column; gap: 10px; }
+  .cart-summary-row { display: flex; justify-content: space-between; align-items: center; }
+  .cart-summary-row span { font-size: 14px; color: var(--text-mid); }
+  .cart-summary-row .val { font-weight: 600; color: var(--text-dark); }
+  .cart-summary-divider { border: none; border-top: 1.5px dashed #dce8e0; margin: 2px 0; }
+  .cart-total-final { display: flex; justify-content: space-between; align-items: center; background: var(--green-pale); border-radius: 14px; padding: 16px 18px; margin-bottom: 14px; border: 1.5px solid #c8e0cf; }
+  .cart-total-final span { font-weight: 700; font-size: 15px; color: var(--text-mid); }
+  .cart-total-final strong { font-size: 22px; font-weight: 800; color: var(--green-deep); }
+  .cart-addr-input {
+    width: 100%; border: 1.5px solid #dce8e0; border-radius: 10px;
+    padding: 12px 16px; font-size: 14px; font-family: 'DM Sans', sans-serif;
+    margin-bottom: 14px; outline: none; resize: vertical; min-height: 70px;
+    color: var(--text-dark);
+  }
+  .cart-addr-input:focus { border-color: var(--green-mid); box-shadow: 0 0 0 3px rgba(45,122,79,0.1); }
+  .cart-order-btn {
+    background: #25d366; color: white; border: none; border-radius: 14px;
+    padding: 16px; font-size: 16px; font-weight: 700; cursor: pointer;
+    width: 100%; transition: var(--transition); font-family: 'DM Sans', sans-serif;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .cart-order-btn:hover { background: #128c7e; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green-deep); color: white; padding: 60px 24px 30px;
+  }
+  .footer-inner { max-width: 1280px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+  .footer-brand p { opacity: 0.65; font-size: 14px; line-height: 1.7; margin-top: 14px; max-width: 240px; }
+  .footer-col h4 { font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; opacity: 0.5; }
+  .footer-col a { display: block; color: white; text-decoration: none; font-size: 14px; opacity: 0.75; margin-bottom: 10px; transition: var(--transition); }
+  .footer-col a:hover { opacity: 1; color: var(--green-accent); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: gap; font-size: 13px; opacity: 0.55; }
+
+  /* ── FLOATING WA ── */
+  #float-wa {
+    position: fixed; bottom: 28px; right: 28px; z-index: 900;
+    background: #25d366; color: white; border-radius: 50%;
+    width: 60px; height: 60px; display: grid; place-items: center;
+    text-decoration: none; font-size: 28px; box-shadow: 0 6px 20px rgba(37,211,102,0.5);
+    transition: var(--transition); animation: pulse 2.5s infinite;
+  }
+  #float-wa:hover { transform: scale(1.12); background: #128c7e; animation: none; }
+  @keyframes pulse { 0%,100%{box-shadow:0 6px 20px rgba(37,211,102,.5)} 50%{box-shadow:0 6px 40px rgba(37,211,102,.8),0 0 0 12px rgba(37,211,102,.12)} }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { display: grid; grid-template-columns: repeat(3,1fr); grid-template-rows: auto; }
+    .hero-img-card:first-child { grid-row: auto; }
+    .cat-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-visual { height: 220px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(4,1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-search { display: none; }
+  }
+  @media(max-width: 600px) {
+    section { padding: 60px 16px; }
+    .gallery-grid { grid-template-columns: repeat(3,1fr); }
+    .products-grid { grid-template-columns: repeat(2,1fr); }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-inner { padding: 40px 16px; }
+    .deals-inner { flex-direction: column; }
+  }
+  @media(max-width: 380px) {
+    .gallery-grid { grid-template-columns: repeat(2,1fr); }
+    .products-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── MOBILE MENU ── */
+  #mobile-menu {
+    display: none; position: fixed; top: 70px; left: 0; right: 0; z-index: 999;
+    background: white; border-bottom: 1.5px solid #e4ede7;
+    box-shadow: 0 8px 24px rgba(26,77,46,0.12);
+    padding: 16px 24px; flex-direction: column; gap: 4px;
+  }
+  #mobile-menu.open { display: flex; }
+  #mobile-menu a { text-decoration: none; color: var(--text-mid); font-weight: 500; padding: 12px 8px; border-bottom: 1px solid #f0f5f1; }
+  #mobile-menu a:last-child { border-bottom: none; }
+
+  .no-results { text-align: center; padding: 60px 20px; color: var(--text-light); grid-column: 1/-1; }
+  .no-results span { font-size: 48px; display: block; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">
+      <div class="nav-logo-icon">🌿</div>
+      <div class="nav-logo-text">
+        <strong>Green's HUB</strong>
+        <span>VEGRUITS HUB PVT. LTD.</span>
+      </div>
+    </a>
+    <div class="nav-search">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="search-input" type="text" placeholder="Search fruits & vegetables…" oninput="handleSearch(this.value)">
+    </div>
+    <div class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="nav-cart-btn" onclick="toggleCart()">
+      🛒 Cart
+      <div class="cart-badge" id="cart-badge">0</div>
+    </button>
+    <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu">
+  <a href="#hero" onclick="closeMobileMenu()">🏠 Home</a>
+  <a href="#shop" onclick="closeMobileMenu()">🛍️ Shop</a>
+  <a href="#about" onclick="closeMobileMenu()">ℹ️ About</a>
+  <a href="#gallery" onclick="closeMobileMenu()">🖼️ Gallery</a>
+  <a href="#reviews" onclick="closeMobileMenu()">⭐ Reviews</a>
+  <a href="#contact" onclick="closeMobileMenu()">📍 Contact</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-leaf">🌿</div>
+  <div class="hero-leaf">🍃</div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>NEW</span> Order in 2 clicks via WhatsApp
+      </div>
+      <h1 class="hero-title">
+        Fresh from<br>Farm to Your<br><span class="highlight">Door 🌱</span>
+      </h1>
+      <p class="hero-sub">Fresh Vegetables and Fresh Fruits — sourced daily, delivered fast. Serving Ahmedabad with love and freshness.</p>
+      <div class="hero-rating">
+        <div class="stars">★★★★★</div>
+        <div class="rating-text">
+          <strong>5.0 / 5.0</strong>
+          <span>14 reviews · "Very fresh & fast delivery"</span>
+        </div>
+      </div>
+      <div class="hero-ctas">
+        <a href="#shop" class="btn-primary">🛍️ Shop Now</a>
+        <a href="https://wa.me/918849110467?text=Hi%2C%20I%20want%20to%20order%20from%20Green's%20HUB!" class="btn-wa" target="_blank">💬 Order on WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-card" style="background:rgba(77,175,117,0.15)">🥦<div class="card-label">Broccoli</div></div>
+      <div class="hero-img-card" style="background:rgba(255,154,60,0.15)">🍊<div class="card-label">Orange</div></div>
+      <div class="hero-img-card" style="background:rgba(244,132,95,0.15)">🍅<div class="card-label">Tomato</div></div>
+      <div class="hero-img-card" style="background:rgba(247,201,72,0.15)">🍋<div class="card-label">Lemon</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ WHY US ═══════════ -->
+<section id="why">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag" style="background:rgba(255,255,255,0.12);color:var(--green-accent)">Why Choose Us</div>
+      <h2 class="section-title">The Freshest Choice<br>in Ahmedabad</h2>
+      <p class="section-sub">We deliver the promise of freshness — every single day.</p>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card"><div class="why-icon">🌅</div><h3>Daily Fresh Stock</h3><p>Fresh produce sourced every morning from farms. We never compromise on freshness.</p></div>
+      <div class="why-card"><div class="why-icon">⚡</div><h3>Fast Delivery</h3><p>Quick home delivery across Ahmedabad. From order to doorstep in no time.</p></div>
+      <div class="why-card"><div class="why-icon">💰</div><h3>Best Prices</h3><p>Competitive pricing directly from farm to you — no middlemen, better value.</p></div>
+      <div class="why-card"><div class="why-icon">⭐</div><h3>Trusted by 500+</h3><p>Rated 5.0 stars by our loyal customers. Trusted by families across the neighbourhood.</p></div>
+      <div class="why-card"><div class="why-icon">📱</div><h3>2-Click Ordering</h3><p>Order in 2 clicks directly via WhatsApp. No app download, no hassle.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CATEGORIES ═══════════ -->
+<section id="categories">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center">
+      <div class="section-tag">Browse by Category</div>
+      <h2 class="section-title">What are you looking for?</h2>
+      <p class="section-sub" style="margin:0 auto">Choose from our freshest fruits and vegetables, hand-picked daily for your family.</p>
+    </div>
+    <div class="cat-grid reveal">
+      <div class="cat-card fruits" onclick="filterProducts('fruits');document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+        <div class="cat-emoji">🍎</div>
+        <div class="cat-content">
+          <h3>Fresh Fruits 🍎</h3>
+          <p>Seasonal & exotic fruits</p>
+          <button class="cat-btn">Explore Fruits →</button>
+        </div>
+      </div>
+      <div class="cat-card veggies" onclick="filterProducts('vegetables');document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+        <div class="cat-emoji">🥦</div>
+        <div class="cat-content">
+          <h3>Fresh Vegetables 🥦</h3>
+          <p>Farm-fresh daily stock</p>
+          <button class="cat-btn">Explore Veggies →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SHOP ═══════════ -->
+<section id="shop">
+  <div class="section-inner">
+    <div class="shop-header reveal">
+      <div>
+        <div class="section-tag">Daily Fresh</div>
+        <h2 class="section-title">Our Products</h2>
+        <p class="section-sub">All stocked fresh every morning. Order and get it delivered today.</p>
+        <div class="filter-tabs">
+          <button class="filter-tab active" onclick="filterProducts('all')" id="tab-all">🛒 All Products</button>
+          <button class="filter-tab" onclick="filterProducts('fruits')" id="tab-fruits">🍎 Fruits</button>
+          <button class="filter-tab" onclick="filterProducts('vegetables')" id="tab-vegetables">🥦 Vegetables</button>
+        </div>
+      </div>
+    </div>
+    <div class="products-grid" id="products-grid"></div>
+  </div>
+</section>
+
+<!-- ═══════════ DAILY DEALS ═══════════ -->
+<section id="deals">
+  <div class="deals-inner">
+    <div class="deals-text reveal">
+      <h2>🌟 Daily Fresh Deals!</h2>
+      <p>New offers every morning. Order early for the freshest picks at best prices.</p>
+    </div>
+    <div class="deals-cta reveal">
+      <a href="#shop" class="btn-dark">🛍️ Shop Deals</a>
+      <a href="https://wa.me/918849110467?text=Hi!%20What%20are%20today's%20fresh%20deals%20at%20Green's%20HUB?" class="btn-wa" target="_blank">💬 Ask on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-img" style="font-size:80px">🌿</div>
+        <div class="about-img">🍅</div>
+        <div class="about-img">🥕</div>
+      </div>
+      <div class="reveal">
+        <div class="section-tag">Our Story</div>
+        <h2 class="section-title">Green's HUB — Your Local Fresh Market</h2>
+        <p style="color:var(--text-mid);font-size:16px;line-height:1.8;margin-bottom:24px">
+          Welcome to <strong>Green's HUB</strong> by VEGRUITS HUB PVT. LTD. — Ahmedabad's most trusted fresh produce destination. Located at Magnet Lifestyle, Vaishnodevi Circle, we've been serving local families with the freshest vegetables and fruits, sourced daily from farms.
+        </p>
+        <p style="color:var(--text-mid);font-size:16px;line-height:1.8;margin-bottom:28px">
+          Our mission is simple: bring the freshest produce to your table, without compromise. From crisp vegetables to juicy fruits, every item you see is handpicked for quality. Order on WhatsApp and we'll get it to you fast.
+        </p>
+        <div class="about-stats">
+          <div class="stat-box"><strong>500+</strong><span>Happy Customers</span></div>
+          <div class="stat-box"><strong>5.0 ⭐</strong><span>Average Rating</span></div>
+          <div class="stat-box"><strong>50+</strong><span>Fresh Products</span></div>
+          <div class="stat-box"><strong>Daily</strong><span>Fresh Stock</span></div>
+        </div>
+        <a href="https://wa.me/918849110467?text=Hi%20Green's%20HUB!%20Tell%20me%20more%20about%20your%20shop." class="btn-wa" target="_blank">💬 Chat With Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GALLERY ═══════════ -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;margin-bottom:48px">
+      <div class="section-tag">Gallery</div>
+      <h2 class="section-title">Fresh Produce, Every Day</h2>
+      <p class="section-sub" style="margin:0 auto">A glimpse into our daily fresh stock — straight from the farm.</p>
+    </div>
+    <div class="gallery-grid reveal" id="gallery-grid"></div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <div class="lightbox-emoji" id="lightbox-emoji"></div>
+    <div class="lightbox-title" id="lightbox-title"></div>
+    <p id="lightbox-desc" style="color:var(--text-light);font-size:14px;margin-top:8px"></p>
+  </div>
+</div>
+
+<!-- ═══════════ REVIEWS ═══════════ -->
+<section id="reviews">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;margin-bottom:0">
+      <div class="section-tag">Customer Reviews</div>
+      <h2 class="section-title">What Our Customers Say</h2>
+    </div>
+    <div class="reviews-rating-hero reveal">
+      <div class="rating-big">5.0</div>
+      <div class="rating-info">
+        <div class="stars-row">★★★★★</div>
+        <p>Based on 14 Google Reviews</p>
+        <p style="margin-top:6px;opacity:.85;font-weight:600">"Very fresh vegetables & fast delivery"</p>
+      </div>
+    </div>
+    <div class="reviews-grid reveal">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Good quality veggies and very fast delivery. Always fresh and never disappoints. Highly recommended!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">SI</div>
+          <div>
+            <div class="reviewer-name">Sagrika Israni</div>
+            <div class="reviewer-tag">Verified Customer · Google Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Very fresh vegetable, home delivery services also good. Must visit this shop — best in the area!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">JS</div>
+          <div>
+            <div class="reviewer-name">Jyoti Singh</div>
+            <div class="reviewer-tag">Verified Customer · Google Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Best vegetable shop in Gandhinagar area. Fresh stock daily and the prices are very reasonable. Love it!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">MP</div>
+          <div>
+            <div class="reviewer-name">Magraj Patel</div>
+            <div class="reviewer-tag">Verified Customer · Google Review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Visit or Order Online</h2>
+      <p class="section-sub" style="margin:0 auto">Find us at our store or place your order instantly via WhatsApp.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Address</h4>
+            <p>Shop no. 21, Magnet Lifestyle, Vaishnodevi Cir,<br>Khodiyar, Ahmedabad, Gujarat 382501</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p>080009 90072</p>
+            <div class="contact-btns">
+              <a href="tel:+918849110467" class="contact-btn call">📞 Call Now</a>
+              <a href="https://wa.me/918849110467" class="contact-btn wa" target="_blank">💬 WhatsApp</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕒</div>
+          <div>
+            <h4>Business Hours</h4>
+            <p>🟢 Open Now · Closes at 9:00 PM</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🛵</div>
+          <div>
+            <h4>Delivery</h4>
+            <p>Home delivery available. Order on WhatsApp for quick delivery to your doorstep.</p>
+          </div>
+        </div>
+      </div>
+      <div class="map-wrap reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.1928!2d72.5776!3d23.1006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b8d49ebefb5%3A0xa3af93c6f8a72d6b!2sMagnet%20Lifestyle%2C%20Vaishnodevi%20Circle%2C%20Ahmedabad!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Green's HUB Location">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="nav-logo-icon">🌿</div>
+          <div class="nav-logo-text">
+            <strong style="color:white">Green's HUB</strong>
+            <span style="color:rgba(255,255,255,0.5)">VEGRUITS HUB PVT. LTD.</span>
+          </div>
+        </div>
+        <p>Fresh vegetables and fruits, delivered daily to your doorstep in Ahmedabad. Your trusted local fresh market.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#hero">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#about">About Us</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <a href="#shop">🍎 Fresh Fruits</a>
+        <a href="#shop">🥦 Fresh Vegetables</a>
+        <a href="#deals">🌟 Daily Deals</a>
+        <a href="#reviews">⭐ Reviews</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+918849110467">📞 080009 90072</a>
+        <a href="https://wa.me/918849110467" target="_blank">💬 WhatsApp Order</a>
+        <a href="#contact">📍 Get Directions</a>
+        <a href="#contact">🕒 Open till 9 PM</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Green's HUB – VEGRUITS HUB PVT. LTD. All rights reserved.</span>
+      <span>Made with 💚 for fresh living</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════ CART DRAWER ═══════════ -->
+<div id="cart-overlay" onclick="toggleCart()">
+  <div id="cart-drawer" onclick="event.stopPropagation()">
+    <div class="cart-drawer-header">
+      <h2>🛒 Your Cart</h2>
+      <button class="cart-close-btn" onclick="toggleCart()">✕</button>
+    </div>
+    <div id="cart-body">
+      <div class="cart-empty" id="cart-empty">
+        <span>🛒</span>
+        <p>Your cart is empty</p>
+        <p style="font-size:13px;margin-top:6px">Add fresh items to get started!</p>
+      </div>
+      <div id="cart-items"></div>
+    </div>
+    <div id="cart-footer" style="display:none">
+      <div class="cart-summary-box">
+        <div class="cart-summary-row"><span>Subtotal</span><span class="val" id="cart-subtotal">₹0</span></div>
+        <div class="cart-summary-row"><span>🛵 Delivery Charge</span><span class="val" style="color:var(--green-mid)">₹30</span></div>
+        <hr class="cart-summary-divider">
+      </div>
+      <div class="cart-total-final">
+        <span>Grand Total</span>
+        <strong id="cart-total">₹0</strong>
+      </div>
+      <textarea class="cart-addr-input" id="delivery-address" placeholder="📍 Enter your delivery address…"></textarea>
+      <button class="cart-order-btn" onclick="orderOnWhatsApp()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Order via WhatsApp
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ FLOATING WA ═══════════ -->
+<a id="float-wa" href="https://wa.me/918849110467?text=Hi%20Green's%20HUB!%20I%20want%20to%20place%20an%20order%20🛒" target="_blank" aria-label="Order on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// ══════════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════════
+const PRODUCTS = [
+  // FRUITS
+  { id: 1, cat: 'fruits', name: 'Fresh Apples', emoji: '🍎', price: 120, mrp: 150, unit: '1 kg', badge: 'Popular' },
+  { id: 2, cat: 'fruits', name: 'Ripe Bananas', emoji: '🍌', price: 40, mrp: 50, unit: '1 dozen', badge: 'Fresh' },
+  { id: 3, cat: 'fruits', name: 'Sweet Oranges', emoji: '🍊', price: 80, mrp: 100, unit: '1 kg', badge: '' },
+  { id: 4, cat: 'fruits', name: 'Juicy Mangoes', emoji: '🥭', price: 160, mrp: 200, unit: '1 kg', badge: 'Seasonal' },
+  { id: 5, cat: 'fruits', name: 'Watermelon', emoji: '🍉', price: 30, mrp: 40, unit: 'Per kg', badge: 'Fresh' },
+  { id: 6, cat: 'fruits', name: 'Sweet Grapes', emoji: '🍇', price: 90, mrp: 110, unit: '500 g', badge: '' },
+  { id: 7, cat: 'fruits', name: 'Fresh Pomegranate', emoji: '🍓', price: 140, mrp: 170, unit: '1 kg', badge: 'Popular' },
+  { id: 8, cat: 'fruits', name: 'Papaya', emoji: '🍈', price: 45, mrp: 60, unit: '1 piece', badge: '' },
+  { id: 9, cat: 'fruits', name: 'Chikoo (Sapota)', emoji: '🟤', price: 60, mrp: 75, unit: '500 g', badge: 'Local' },
+  { id: 10, cat: 'fruits', name: 'Fresh Lemon', emoji: '🍋', price: 20, mrp: 25, unit: '250 g', badge: '' },
+  // VEGETABLES
+  { id: 11, cat: 'vegetables', name: 'Fresh Tomatoes', emoji: '🍅', price: 35, mrp: 45, unit: '1 kg', badge: 'Daily Fresh' },
+  { id: 12, cat: 'vegetables', name: 'Green Spinach', emoji: '🥬', price: 25, mrp: 30, unit: '1 bunch', badge: '' },
+  { id: 13, cat: 'vegetables', name: 'Broccoli', emoji: '🥦', price: 60, mrp: 80, unit: '1 piece', badge: 'Fresh' },
+  { id: 14, cat: 'vegetables', name: 'Carrots', emoji: '🥕', price: 40, mrp: 50, unit: '1 kg', badge: '' },
+  { id: 15, cat: 'vegetables', name: 'Cucumber', emoji: '🥒', price: 30, mrp: 40, unit: '1 kg', badge: 'Cool' },
+  { id: 16, cat: 'vegetables', name: 'Capsicum', emoji: '🫑', price: 55, mrp: 70, unit: '500 g', badge: '' },
+  { id: 17, cat: 'vegetables', name: 'Onions', emoji: '🧅', price: 30, mrp: 40, unit: '1 kg', badge: 'Staple' },
+  { id: 18, cat: 'vegetables', name: 'Potatoes', emoji: '🥔', price: 28, mrp: 35, unit: '1 kg', badge: 'Staple' },
+  { id: 19, cat: 'vegetables', name: 'Green Peas', emoji: '🟢', price: 50, mrp: 65, unit: '500 g', badge: '' },
+  { id: 20, cat: 'vegetables', name: 'Cauliflower', emoji: '🥛', price: 35, mrp: 45, unit: '1 piece', badge: '' },
+  { id: 21, cat: 'vegetables', name: 'Bitter Gourd', emoji: '🫛', price: 45, mrp: 55, unit: '500 g', badge: '' },
+  { id: 22, cat: 'vegetables', name: 'Bottle Gourd', emoji: '🥬', price: 20, mrp: 28, unit: '1 piece', badge: '' },
+  { id: 23, cat: 'vegetables', name: 'Drumstick', emoji: '🟫', price: 30, mrp: 38, unit: '250 g', badge: 'Local' },
+  { id: 24, cat: 'vegetables', name: 'Lady Finger', emoji: '🫛', price: 40, mrp: 50, unit: '500 g', badge: '' },
+];
+
+const GALLERY = [
+  { emoji:'🍎', name:'Fresh Apples', desc:'Red & juicy' },
+  { emoji:'🥦', name:'Broccoli', desc:'Farm picked' },
+  { emoji:'🥭', name:'Mangoes', desc:'Alphonso' },
+  { emoji:'🍅', name:'Tomatoes', desc:'Vine ripened' },
+  { emoji:'🍋', name:'Lemons', desc:'Sour & fresh' },
+  { emoji:'🥕', name:'Carrots', desc:'Organic' },
+  { emoji:'🍌', name:'Bananas', desc:'Ripe bunch' },
+  { emoji:'🥬', name:'Leafy Greens', desc:'Spinach & more' },
+  { emoji:'🍊', name:'Oranges', desc:'Sweet & tangy' },
+  { emoji:'🧅', name:'Onions', desc:'Daily staple' },
+  { emoji:'🍇', name:'Grapes', desc:'Sweet black' },
+  { emoji:'🥔', name:'Potatoes', desc:'Fresh stock' },
+  { emoji:'🍉', name:'Watermelon', desc:'Summer special' },
+  { emoji:'🥒', name:'Cucumber', desc:'Cool & crisp' },
+  { emoji:'🫑', name:'Capsicum', desc:'Red & green' },
+  { emoji:'🍓', name:'Pomegranate', desc:'Rich seeds' },
+  { emoji:'🥦', name:'Cauliflower', desc:'White fresh' },
+  { emoji:'🥭', name:'Daily Fresh', desc:'Morning stock' },
+  { emoji:'🌿', name:'Herbs', desc:'Coriander & mint' },
+  { emoji:'🍈', name:'Papaya', desc:'Ripe & sweet' },
+  { emoji:'🫛', name:'Lady Finger', desc:'Fresh pods' },
+  { emoji:'🌱', name:'Farm Fresh', desc:'Direct source' },
+];
+
+// ══════════════════════════════════════════════
+// CART STATE
+// ══════════════════════════════════════════════
+let cart = {};
+let currentFilter = 'all';
+let searchQuery = '';
+
+// ══════════════════════════════════════════════
+// RENDER PRODUCTS
+// ══════════════════════════════════════════════
+function renderProducts() {
+  const grid = document.getElementById('products-grid');
+  let filtered = PRODUCTS.filter(p => {
+    const matchCat = currentFilter === 'all' || p.cat === currentFilter;
+    const matchSearch = searchQuery === '' || p.name.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchCat && matchSearch;
+  });
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="no-results"><span>🔍</span><p>No products found for "${searchQuery}"</p></div>`;
+    return;
+  }
+  grid.innerHTML = filtered.map(p => {
+    const cartQty = cart[p.id] ? cart[p.id].qty : 1;
+    const inCart = cart[p.id];
+    return `<div class="product-card" id="card-${p.id}">
+      <div class="product-img-wrap">
+        <div style="font-size:70px">${p.emoji}</div>
+        ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
+      </div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-unit">${p.unit}</div>
+        <div class="product-price">₹${p.price} <span>₹${p.mrp}</span></div>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="changeQty(${p.id}, -1)">−</button>
+          <div class="qty-val" id="qty-${p.id}">${cartQty}</div>
+          <button class="qty-btn" onclick="changeQty(${p.id}, 1)">+</button>
+        </div>
+        <button class="add-cart-btn ${inCart?'added':''}" id="btn-${p.id}" onclick="addToCart(${p.id})">
+          ${inCart ? '✅ Added' : '🛒 Add to Cart'}
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function changeQty(id, delta) {
+  const el = document.getElementById(`qty-${id}`);
+  if (!el) return;
+  let val = parseInt(el.textContent) + delta;
+  if (val < 1) val = 1;
+  el.textContent = val;
+  if (cart[id]) {
+    cart[id].qty = val;
+    updateCartUI();
+  }
+}
+
+function addToCart(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  const qty = parseInt(document.getElementById(`qty-${id}`).textContent);
+  cart[id] = { ...p, qty };
+  document.getElementById(`btn-${id}`).textContent = '✅ Added';
+  document.getElementById(`btn-${id}`).classList.add('added');
+  updateCartUI();
+  showCartBounce();
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  renderProducts();
+  updateCartUI();
+}
+
+const DELIVERY_CHARGE = 30;
+
+function updateCartUI() {
+  const items = Object.values(cart);
+  const badge = document.getElementById('cart-badge');
+  const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0);
+  const grandTotal = subtotal + (items.length > 0 ? DELIVERY_CHARGE : 0);
+
+  badge.style.display = items.length > 0 ? 'flex' : 'none';
+  badge.textContent = items.length;
+
+  document.getElementById('cart-items').innerHTML = items.map(i => `
+    <div class="cart-item">
+      <div class="cart-item-emoji">${i.emoji}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${i.name}</div>
+        <div class="cart-item-detail">${i.unit} · ₹${i.price} each</div>
+        <div class="cart-item-controls">
+          <button class="cart-qty-btn" onclick="cartChangeQty(${i.id}, -1)">−</button>
+          <span class="cart-qty-val">${i.qty}</span>
+          <button class="cart-qty-btn" onclick="cartChangeQty(${i.id}, 1)">+</button>
+        </div>
+      </div>
+      <div class="cart-item-right">
+        <button class="cart-item-remove" onclick="removeFromCart(${i.id})" title="Remove">🗑</button>
+        <div class="cart-item-price">₹${i.price * i.qty}</div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('cart-subtotal').textContent = `₹${subtotal}`;
+  document.getElementById('cart-total').textContent = `₹${grandTotal}`;
+  document.getElementById('cart-empty').style.display = items.length ? 'none' : 'block';
+  document.getElementById('cart-footer').style.display = items.length ? 'block' : 'none';
+}
+
+function cartChangeQty(id, delta) {
+  if (!cart[id]) return;
+  cart[id].qty += delta;
+  if (cart[id].qty < 1) {
+    removeFromCart(id);
+    return;
+  }
+  updateCartUI();
+}
+
+function showCartBounce() {
+  const btn = document.querySelector('.nav-cart-btn');
+  btn.style.transform = 'scale(1.15)';
+  setTimeout(() => { btn.style.transform = ''; }, 200);
+}
+
+// ══════════════════════════════════════════════
+// CART DRAWER
+// ══════════════════════════════════════════════
+function toggleCart() {
+  const overlay = document.getElementById('cart-overlay');
+  overlay.classList.toggle('open');
+  document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+}
+
+// ══════════════════════════════════════════════
+// WHATSAPP ORDER
+// ══════════════════════════════════════════════
+function orderOnWhatsApp() {
+  const items = Object.values(cart);
+  if (items.length === 0) return;
+  const addr = document.getElementById('delivery-address').value.trim();
+  const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0);
+  const grandTotal = subtotal + DELIVERY_CHARGE;
+  let msg = `🛒 *Order from Green's HUB*\n`;
+  msg += `━━━━━━━━━━━━━━━━━━\n`;
+  items.forEach(i => {
+    msg += `• ${i.emoji} *${i.name}* (${i.unit}) × ${i.qty} = ₹${i.price * i.qty}\n`;
+  });
+  msg += `━━━━━━━━━━━━━━━━━━\n`;
+  msg += `🧾 Subtotal: ₹${subtotal}\n`;
+  msg += `🛵 Delivery: ₹${DELIVERY_CHARGE}\n`;
+  msg += `💰 *Grand Total: ₹${grandTotal}*\n`;
+  if (addr) msg += `📍 *Delivery Address:*\n${addr}\n`;
+  msg += `\nPlease confirm my order. Thank you! 🙏`;
+  const encoded = encodeURIComponent(msg);
+  window.open(`https://wa.me/918849110467?text=${encoded}`, '_blank');
+}
+
+// ══════════════════════════════════════════════
+// FILTER & SEARCH
+// ══════════════════════════════════════════════
+function filterProducts(cat) {
+  currentFilter = cat;
+  ['all','fruits','vegetables'].forEach(t => {
+    document.getElementById(`tab-${t}`)?.classList.toggle('active', t === cat);
+  });
+  renderProducts();
+}
+
+function handleSearch(val) {
+  searchQuery = val;
+  if (val.length > 0) {
+    document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+  }
+  renderProducts();
+}
+
+// ══════════════════════════════════════════════
+// GALLERY
+// ══════════════════════════════════════════════
+function renderGallery() {
+  const grid = document.getElementById('gallery-grid');
+  const colors = ['#e8f5ec','#fff3e0','#fce4ec','#e8eaf6','#f3e5f5','#e0f7fa','#f9fbe7'];
+  grid.innerHTML = GALLERY.map((g, i) => `
+    <div class="gallery-item" style="background:${colors[i%colors.length]}" onclick="openLightbox('${g.emoji}','${g.name}','${g.desc}')">
+      <span>${g.emoji}</span>
+      <div class="overlay">🔍</div>
+    </div>`).join('');
+}
+
+function openLightbox(emoji, name, desc) {
+  document.getElementById('lightbox-emoji').textContent = emoji;
+  document.getElementById('lightbox-title').textContent = name;
+  document.getElementById('lightbox-desc').textContent = desc;
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+// ══════════════════════════════════════════════
+// NAVBAR
+// ══════════════════════════════════════════════
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+});
+
+function toggleMobileMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+
+// ══════════════════════════════════════════════
+// SCROLL REVEAL
+// ══════════════════════════════════════════════
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+renderProducts();
+renderGallery();
+</script>
+</body>
+</html>
