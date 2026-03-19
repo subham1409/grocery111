@@ -259,8 +259,14 @@
   .product-img-wrap {
     aspect-ratio: 1; background: var(--green-pale);
     display: flex; align-items: center; justify-content: center;
-    font-size: 70px; position: relative; overflow: hidden;
+    position: relative; overflow: hidden;
   }
+  .product-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+  }
+  .product-card:hover .product-img-wrap img { transform: scale(1.07); }
   .product-badge {
     position: absolute; top: 10px; left: 10px;
     background: var(--amber); color: var(--green-deep);
@@ -943,6 +949,7 @@
         <span>Grand Total</span>
         <strong id="cart-total">₹0</strong>
       </div>
+      <input type="text" class="cart-addr-input" id="customer-name" placeholder="👤 Your name…" style="min-height:unset;height:44px;resize:none;margin-bottom:10px">
       <textarea class="cart-addr-input" id="delivery-address" placeholder="📍 Enter your delivery address…"></textarea>
       <button class="cart-order-btn" onclick="orderOnWhatsApp()">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -963,31 +970,31 @@
 // ══════════════════════════════════════════════
 const PRODUCTS = [
   // FRUITS
-  { id: 1, cat: 'fruits', name: 'Fresh Apples', emoji: '🍎', price: 120, mrp: 150, unit: '1 kg', badge: 'Popular' },
-  { id: 2, cat: 'fruits', name: 'Ripe Bananas', emoji: '🍌', price: 40, mrp: 50, unit: '1 dozen', badge: 'Fresh' },
-  { id: 3, cat: 'fruits', name: 'Sweet Oranges', emoji: '🍊', price: 80, mrp: 100, unit: '1 kg', badge: '' },
-  { id: 4, cat: 'fruits', name: 'Juicy Mangoes', emoji: '🥭', price: 160, mrp: 200, unit: '1 kg', badge: 'Seasonal' },
-  { id: 5, cat: 'fruits', name: 'Watermelon', emoji: '🍉', price: 30, mrp: 40, unit: 'Per kg', badge: 'Fresh' },
-  { id: 6, cat: 'fruits', name: 'Sweet Grapes', emoji: '🍇', price: 90, mrp: 110, unit: '500 g', badge: '' },
-  { id: 7, cat: 'fruits', name: 'Fresh Pomegranate', emoji: '🍓', price: 140, mrp: 170, unit: '1 kg', badge: 'Popular' },
-  { id: 8, cat: 'fruits', name: 'Papaya', emoji: '🍈', price: 45, mrp: 60, unit: '1 piece', badge: '' },
-  { id: 9, cat: 'fruits', name: 'Chikoo (Sapota)', emoji: '🟤', price: 60, mrp: 75, unit: '500 g', badge: 'Local' },
-  { id: 10, cat: 'fruits', name: 'Fresh Lemon', emoji: '🍋', price: 20, mrp: 25, unit: '250 g', badge: '' },
+  { id: 1,  cat: 'fruits',     name: 'Fresh Apples',     emoji: '🍎', img: 'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=400&q=80',  price: 120, mrp: 150, unit: '1 kg',    badge: 'Popular' },
+  { id: 2,  cat: 'fruits',     name: 'Ripe Bananas',     emoji: '🍌', img: 'https://images.unsplash.com/photo-1528825871115-3581a5387919?w=400&q=80',  price: 40,  mrp: 50,  unit: '1 dozen',  badge: 'Fresh' },
+  { id: 3,  cat: 'fruits',     name: 'Sweet Oranges',    emoji: '🍊', img: 'https://images.unsplash.com/photo-1547514701-42782101795e?w=400&q=80',  price: 80,  mrp: 100, unit: '1 kg',    badge: '' },
+  { id: 4,  cat: 'fruits',     name: 'Juicy Mangoes',    emoji: '🥭', img: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=400&q=80',  price: 160, mrp: 200, unit: '1 kg',    badge: 'Seasonal' },
+  { id: 5,  cat: 'fruits',     name: 'Watermelon',       emoji: '🍉', img: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&q=80',  price: 30,  mrp: 40,  unit: 'Per kg',   badge: 'Fresh' },
+  { id: 6,  cat: 'fruits',     name: 'Sweet Grapes',     emoji: '🍇', img: 'https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=400&q=80',  price: 90,  mrp: 110, unit: '500 g',   badge: '' },
+  { id: 7,  cat: 'fruits',     name: 'Fresh Pomegranate',emoji: '🍓', img: 'https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=400&q=80',  price: 140, mrp: 170, unit: '1 kg',    badge: 'Popular' },
+  { id: 8,  cat: 'fruits',     name: 'Papaya',           emoji: '🍈', img: 'https://images.unsplash.com/photo-1517282009859-f000ec3b26fe?w=400&q=80',  price: 45,  mrp: 60,  unit: '1 piece',  badge: '' },
+  { id: 9,  cat: 'fruits',     name: 'Chikoo (Sapota)',  emoji: '🟤', img: 'https://images.unsplash.com/photo-1590005024862-6b67679a29fb?w=400&q=80',  price: 60,  mrp: 75,  unit: '500 g',   badge: 'Local' },
+  { id: 10, cat: 'fruits',     name: 'Fresh Lemon',      emoji: '🍋', img: 'https://images.unsplash.com/photo-1582087954994-2e7b08fb2613?w=400&q=80',  price: 20,  mrp: 25,  unit: '250 g',   badge: '' },
   // VEGETABLES
-  { id: 11, cat: 'vegetables', name: 'Fresh Tomatoes', emoji: '🍅', price: 35, mrp: 45, unit: '1 kg', badge: 'Daily Fresh' },
-  { id: 12, cat: 'vegetables', name: 'Green Spinach', emoji: '🥬', price: 25, mrp: 30, unit: '1 bunch', badge: '' },
-  { id: 13, cat: 'vegetables', name: 'Broccoli', emoji: '🥦', price: 60, mrp: 80, unit: '1 piece', badge: 'Fresh' },
-  { id: 14, cat: 'vegetables', name: 'Carrots', emoji: '🥕', price: 40, mrp: 50, unit: '1 kg', badge: '' },
-  { id: 15, cat: 'vegetables', name: 'Cucumber', emoji: '🥒', price: 30, mrp: 40, unit: '1 kg', badge: 'Cool' },
-  { id: 16, cat: 'vegetables', name: 'Capsicum', emoji: '🫑', price: 55, mrp: 70, unit: '500 g', badge: '' },
-  { id: 17, cat: 'vegetables', name: 'Onions', emoji: '🧅', price: 30, mrp: 40, unit: '1 kg', badge: 'Staple' },
-  { id: 18, cat: 'vegetables', name: 'Potatoes', emoji: '🥔', price: 28, mrp: 35, unit: '1 kg', badge: 'Staple' },
-  { id: 19, cat: 'vegetables', name: 'Green Peas', emoji: '🟢', price: 50, mrp: 65, unit: '500 g', badge: '' },
-  { id: 20, cat: 'vegetables', name: 'Cauliflower', emoji: '🥛', price: 35, mrp: 45, unit: '1 piece', badge: '' },
-  { id: 21, cat: 'vegetables', name: 'Bitter Gourd', emoji: '🫛', price: 45, mrp: 55, unit: '500 g', badge: '' },
-  { id: 22, cat: 'vegetables', name: 'Bottle Gourd', emoji: '🥬', price: 20, mrp: 28, unit: '1 piece', badge: '' },
-  { id: 23, cat: 'vegetables', name: 'Drumstick', emoji: '🟫', price: 30, mrp: 38, unit: '250 g', badge: 'Local' },
-  { id: 24, cat: 'vegetables', name: 'Lady Finger', emoji: '🫛', price: 40, mrp: 50, unit: '500 g', badge: '' },
+  { id: 11, cat: 'vegetables', name: 'Fresh Tomatoes',   emoji: '🍅', img: 'https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=400&q=80',  price: 35,  mrp: 45,  unit: '1 kg',    badge: 'Daily Fresh' },
+  { id: 12, cat: 'vegetables', name: 'Green Spinach',    emoji: '🥬', img: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&q=80',  price: 25,  mrp: 30,  unit: '1 bunch',  badge: '' },
+  { id: 13, cat: 'vegetables', name: 'Broccoli',         emoji: '🥦', img: 'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=400&q=80',  price: 60,  mrp: 80,  unit: '1 piece',  badge: 'Fresh' },
+  { id: 14, cat: 'vegetables', name: 'Carrots',          emoji: '🥕', img: 'https://images.unsplash.com/photo-1447175008436-054170c2e979?w=400&q=80',  price: 40,  mrp: 50,  unit: '1 kg',    badge: '' },
+  { id: 15, cat: 'vegetables', name: 'Cucumber',         emoji: '🥒', img: 'https://images.unsplash.com/photo-1568584711075-3d021a7c3ca3?w=400&q=80',  price: 30,  mrp: 40,  unit: '1 kg',    badge: 'Cool' },
+  { id: 16, cat: 'vegetables', name: 'Capsicum',         emoji: '🫑', img: 'https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=400&q=80',  price: 55,  mrp: 70,  unit: '500 g',   badge: '' },
+  { id: 17, cat: 'vegetables', name: 'Onions',           emoji: '🧅', img: 'https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=400&q=80',  price: 30,  mrp: 40,  unit: '1 kg',    badge: 'Staple' },
+  { id: 18, cat: 'vegetables', name: 'Potatoes',         emoji: '🥔', img: 'https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=400&q=80',  price: 28,  mrp: 35,  unit: '1 kg',    badge: 'Staple' },
+  { id: 19, cat: 'vegetables', name: 'Green Peas',       emoji: '🟢', img: 'https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=400&q=80',  price: 50,  mrp: 65,  unit: '500 g',   badge: '' },
+  { id: 20, cat: 'vegetables', name: 'Cauliflower',      emoji: '🥦', img: 'https://images.unsplash.com/photo-1568584711271-6c929fb49b60?w=400&q=80',  price: 35,  mrp: 45,  unit: '1 piece',  badge: '' },
+  { id: 21, cat: 'vegetables', name: 'Bitter Gourd',     emoji: '🫛', img: 'https://images.unsplash.com/photo-1627143818488-5e2f879baf3b?w=400&q=80',  price: 45,  mrp: 55,  unit: '500 g',   badge: '' },
+  { id: 22, cat: 'vegetables', name: 'Bottle Gourd',     emoji: '🥬', img: 'https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=400&q=80',  price: 20,  mrp: 28,  unit: '1 piece',  badge: '' },
+  { id: 23, cat: 'vegetables', name: 'Drumstick',        emoji: '🟫', img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&q=80',  price: 30,  mrp: 38,  unit: '250 g',   badge: 'Local' },
+  { id: 24, cat: 'vegetables', name: 'Lady Finger',      emoji: '🫛', img: 'https://images.unsplash.com/photo-1627735890949-f66e6e3d1a9d?w=400&q=80',  price: 40,  mrp: 50,  unit: '500 g',   badge: '' },
 ];
 
 const GALLERY = [
@@ -1041,7 +1048,8 @@ function renderProducts() {
     const inCart = cart[p.id];
     return `<div class="product-card" id="card-${p.id}">
       <div class="product-img-wrap">
-        <div style="font-size:70px">${p.emoji}</div>
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="display:none;font-size:60px;width:100%;height:100%;align-items:center;justify-content:center;background:var(--green-pale)">${p.emoji}</div>
         ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
       </div>
       <div class="product-info">
@@ -1102,7 +1110,9 @@ function updateCartUI() {
 
   document.getElementById('cart-items').innerHTML = items.map(i => `
     <div class="cart-item">
-      <div class="cart-item-emoji">${i.emoji}</div>
+      <div class="cart-item-emoji" style="overflow:hidden;padding:0">
+        <img src="${i.img}" alt="${i.name}" style="width:100%;height:100%;object-fit:cover;border-radius:10px" onerror="this.style.display='none';this.parentElement.textContent='${i.emoji}'">
+      </div>
       <div class="cart-item-info">
         <div class="cart-item-name">${i.name}</div>
         <div class="cart-item-detail">${i.unit} · ₹${i.price} each</div>
@@ -1155,11 +1165,13 @@ function toggleCart() {
 function orderOnWhatsApp() {
   const items = Object.values(cart);
   if (items.length === 0) return;
+  const name = document.getElementById('customer-name').value.trim();
   const addr = document.getElementById('delivery-address').value.trim();
   const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0);
   const grandTotal = subtotal + DELIVERY_CHARGE;
   let msg = `🛒 *Order from Green's HUB*\n`;
   msg += `━━━━━━━━━━━━━━━━━━\n`;
+  if (name) msg += `👤 *Customer:* ${name}\n`;
   items.forEach(i => {
     msg += `• ${i.emoji} *${i.name}* (${i.unit}) × ${i.qty} = ₹${i.price * i.qty}\n`;
   });
